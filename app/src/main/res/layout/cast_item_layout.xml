@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/eight_dp"
+    android:layout_marginTop="@dimen/eight_dp"
+    android:layout_marginEnd="@dimen/eight_dp"
+    android:background="@drawable/circular_background"
+    android:elevation="@dimen/four_dp"
+    android:paddingBottom="@dimen/eight_dp">
+
+
+    <TextView
+        android:id="@+id/cast_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/eight_dp"
+        android:fontFamily="sans-serif"
+        android:padding="@dimen/four_dp"
+        android:text="@string/cast_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/twenty_sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/actor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/eight_dp"
+            android:fontFamily="sans-serif"
+            android:padding="@dimen/four_dp"
+            android:text="@string/app_name"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/twenty_sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/cast_tv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/role_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/eight_dp"
+            android:fontFamily="sans-serif"
+            android:padding="@dimen/four_dp"
+            android:text="@string/role_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/twenty_sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cast_tv" />
+
+    <TextView
+            android:id="@+id/role_name"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/eight_dp"
+            android:fontFamily="sans-serif"
+            android:padding="@dimen/four_dp"
+            android:text="@string/app_name"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/twenty_sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/cast_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cast_tv" />
+
+
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">The Movie DB</string>
+    <string name="fetch_data">Fetching Popular movie</string>
+    <string name="movie_detail">Fetching movie details</string>
+    <string name="title_text">The Lion King</string>
+    <string name="rate_text">7.2</string>
+    <string name="lang_text">EN</string>
+    <string name="date_text">21st April 2019</string>
+    <string name="something_wrong">Something went wrong..!!</string>
+    <string name="duration">120 minutes</string>
+    <string name="budget_text">Budget</string>
+    <string name="revenue_text">Revenue</string>
+    <string name="check_internet">Check internet connection</string>
+    <string name="popular_movies">Popular movies</string>
+    <string name="search">Search</string>
+    <string name="popular_text">Popular</string>
+    <string name="now_playing_text">Now Playing</string>
+    <string name="placement">Placement</string>
+    <string name="fetch_now_playing_data">Fetching Now Playing movie</string>
+    <string name="cast_text">Cast name : </string>
+    <string name="role_text">Role name : </string>
+    <string name="cast">Cast</string>
+    <string name="na_text">NA</string>
+
+    <string-array name="movie_type">
+        <item>Now Playing</item>
+        <item>Popular</item>
+    </string-array>
+</resources>
