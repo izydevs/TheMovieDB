@@ -73,11 +73,12 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         val viewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
-        viewModel.getMovieDetails(this!!.movieId!!).observe(this, Observer { apiResponse ->
+        viewModel.getMovieDetails(movieId!!).observe(this, Observer { apiResponse ->
             assert(apiResponse != null)
             updateUI(apiResponse!!)
         })
-        viewModel.loadMovieCastCrew(this!!.movieId!!)
+        viewModel.loadMovieDetails(movieId!!)
+        viewModel.loadMovieCastCrew(movieId!!)
     }
 
     private fun showProgressDialog() {

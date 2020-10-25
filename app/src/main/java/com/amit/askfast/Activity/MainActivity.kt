@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         if (Utils.checkInternetConnection(this)) {
             initBindViews()
         } else {
-            Toast.makeText(this, resources.getString(R.string.check_internet), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, resources.getString(R.string.check_internet), Toast.LENGTH_LONG)
+                .show()
             finishAffinity()
         }
     }
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private fun initViewModel() {
         viewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
-        viewModel!!.movieList.observe(this, Observer { apiResponse ->
+        viewModel!!.getMoviesList().observe(this, Observer { apiResponse ->
             assert(apiResponse != null)
             updateUI(apiResponse!!)
         })
@@ -81,7 +82,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             mAdapter = MovieAdapter(response.popularMovies!!.results!!, this)
             recyclerView!!.adapter = mAdapter
         } else {
-            Toast.makeText(this, resources.getString(R.string.something_wrong), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, resources.getString(R.string.something_wrong), Toast.LENGTH_LONG)
+                .show()
         }
 
     }
