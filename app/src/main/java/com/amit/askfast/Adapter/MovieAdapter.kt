@@ -42,6 +42,7 @@ class MovieAdapter(private val myList: List<Movie>, private val context: Context
         myViewHolder.title.text = movie.title
         myViewHolder.summary.text = movie.overview
         myViewHolder.rating.text = movie.vote_average.toString()
+        Log.d("asdf","release date ${movie.release_date}")
         myViewHolder.releaseDate.text = Utils.convertTimeFormat(movie.release_date)
         myViewHolder.language.text = movie.original_language!!.toUpperCase()
 

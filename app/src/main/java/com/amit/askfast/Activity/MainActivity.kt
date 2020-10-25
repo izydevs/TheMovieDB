@@ -16,6 +16,7 @@ import android.widget.Toast
 
 import com.amit.askfast.Adapter.MovieAdapter
 import com.amit.askfast.Model.ApiResponse
+import com.amit.askfast.Model.Movie
 import com.amit.askfast.Utils.Utils
 import com.amit.askfast.ViewModel.MovieViewModel
 import com.amit.askfast.R
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private var progressDialog: ProgressDialog? = null
     private var viewModel: MovieViewModel? = null
     private var mAdapter: MovieAdapter? = null
+    private var myList: List<Movie>? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +44,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 .show()
             finishAffinity()
         }
+    }
+
+    override fun onResume() {
+        showProgressDialog(applicationContext.resources.getString(R.string.fetch_now_playing_data))
+        viewModel!!.loadMoviesList("now_playing")
+        super.onResume()
     }
 
     private fun initBindViews() {
@@ -79,8 +87,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun updateUI(response: ApiResponse) {
         dismissProgressDialog()
         if (response.isStatus) {
-            mAdapter = MovieAdapter(response.popularMovies!!.results!!, this)
-            recyclerView!!.adapter = mAdapter
+            myList = response.popularMovies!!.results!!
+            sortByDate()
         } else {
             Toast.makeText(this, resources.getString(R.string.something_wrong), Toast.LENGTH_LONG)
                 .show()
@@ -110,20 +118,29 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         })
     }
 
-    override fun onItemSelected(parent: AdapterView<*>, view: View, i: Int, l: Long) {
-        if (i == 0) {
-            showProgressDialog(applicationContext.resources.getString(R.string.fetch_now_playing_data))
-            viewModel!!.loadMoviesList("now_playing")
-            //Toast.makeText(this, "clicked on " + parent.getItemAtPosition(i).toString(), Toast.LENGTH_LONG).show();
-
-        } else if (i == 1) {
-            showProgressDialog(applicationContext.resources.getString(R.string.fetch_data))
-            viewModel!!.loadMoviesList("popular")
-            //Toast.makeText(this, "clicked on " + parent.getItemAtPosition(i).toString(), Toast.LENGTH_LONG).show();
+    private fun sortByDate() {
+        if (myList != null) {
+            myList = myList!!.sortedWith(compareBy({ it.release_date })).reversed()
+            mAdapter = MovieAdapter(myList!!, this)
+            recyclerView!!.adapter = mAdapter
         }
     }
 
-    override fun onNothingSelected(adapterView: AdapterView<*>) {
-
+    private fun sortByRating() {
+        if (myList != null) {
+            myList = myList!!.sortedWith(compareBy({ it.vote_average })).reversed()
+            mAdapter = MovieAdapter(myList!!, this)
+            recyclerView!!.adapter = mAdapter
+        }
     }
+
+    override fun onItemSelected(parent: AdapterView<*>, view: View, i: Int, l: Long) {
+        if (i == 0) {
+            sortByDate()
+        } else if (i == 1) {
+            sortByRating()
+        }
+    }
+
+    override fun onNothingSelected(adapterView: AdapterView<*>) {}
 }

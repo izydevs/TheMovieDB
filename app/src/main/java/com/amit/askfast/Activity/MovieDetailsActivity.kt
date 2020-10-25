@@ -33,6 +33,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private var poster: ImageView? = null
     private var recyclerView: RecyclerView? = null
     private var progressDialog: ProgressDialog? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
@@ -50,7 +51,8 @@ class MovieDetailsActivity : AppCompatActivity() {
         if (Utils.checkInternetConnection(this)) {
             initBindViews()
         } else {
-            Toast.makeText(this, resources.getString(R.string.check_internet), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, resources.getString(R.string.check_internet), Toast.LENGTH_LONG)
+                .show()
         }
     }
 
@@ -100,7 +102,8 @@ class MovieDetailsActivity : AppCompatActivity() {
             val mAdapter = CastAdapter(response.castCrew!!.cast!!, this)
             recyclerView!!.adapter = mAdapter
         } else {
-            Toast.makeText(this, resources.getString(R.string.something_wrong), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, resources.getString(R.string.something_wrong), Toast.LENGTH_LONG)
+                .show()
         }
     }
 

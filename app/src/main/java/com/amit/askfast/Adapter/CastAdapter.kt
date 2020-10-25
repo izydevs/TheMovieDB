@@ -26,6 +26,7 @@ class CastAdapter(private val myList: List<CastCrew.Cast>, private val context: 
     }
 
     private fun setName(characterName: TextView, character: String) {
+
         if (!character.isEmpty() || character != "") {
             characterName.text = character
         } else
@@ -37,6 +38,7 @@ class CastAdapter(private val myList: List<CastCrew.Cast>, private val context: 
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         internal var actorName: TextView = itemView.findViewById(R.id.actor_name)
         internal var characterName: TextView = itemView.findViewById(R.id.role_name)
 
